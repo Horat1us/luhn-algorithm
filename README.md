@@ -1,16 +1,15 @@
 # Luhn Algorithm
 
-[![Build Status](https://circleci.com/gh/Ekman/luhn-algorithm.svg?style=svg)](https://app.circleci.com/pipelines/github/Ekman/luhn-algorithm)
-[![Coverage Status](https://coveralls.io/repos/github/Ekman/luhn-algorithm/badge.svg?branch=master)](https://coveralls.io/github/Ekman/luhn-algorithm?branch=master)
-
 This is a zero dependency implementation of the Luhn Algorithm for PHP 7.4 and above. The Luhn Algorithm is used to validate things like credit cards and national identification numbers. More information on the algorithm can be found at [Wikipedia](http://en.wikipedia.org/wiki/Luhn_algorithm).
+
+This is fork of [Ekman/luhn-algorithm](https://github.com/Ekman/luhn-algorithm) with PHP 8.4 compatibility fix.
 
 ## Installation
 
 Install with [Composer](https://getcomposer.org/):
 
 ```bash
-composer require nekman/luhn-algorithm
+composer require horat1us/luhn-algorithm:^6.0
 ```
 
 ## Usage
@@ -56,4 +55,4 @@ This project complies with [Semantic Versioning](https://semver.org/).
 
 ## Changelog
 
-For a complete list of changes, and how to migrate between major versions, see [releases page](https://github.com/Ekman/luhn-algorithm/releases).
+For a complete list of changes, and how to migrate between major versions, see [releases page](https://github.com/horat1us/luhn-algorithm/releases).
