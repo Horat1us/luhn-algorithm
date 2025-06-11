@@ -1,5 +1,7 @@
 # Luhn Algorithm
 
+[![PHP Tests & Lint](https://github.com/Horat1us/luhn-algorithm/actions/workflows/php.yml/badge.svg)](https://github.com/Horat1us/luhn-algorithm/actions/workflows/php.yml)
+
 This is a zero dependency implementation of the Luhn Algorithm for PHP 7.4 and above. The Luhn Algorithm is used to validate things like credit cards and national identification numbers. More information on the algorithm can be found at [Wikipedia](http://en.wikipedia.org/wiki/Luhn_algorithm).
 
 This is fork of [Ekman/luhn-algorithm](https://github.com/Ekman/luhn-algorithm) with PHP 8.4 compatibility fix.
