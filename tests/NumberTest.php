@@ -28,19 +28,18 @@ namespace Nekman\LuhnAlgorithm\Test;
 use Nekman\LuhnAlgorithm\Contract\LuhnAlgorithmExceptionInterface;
 use Nekman\LuhnAlgorithm\Exceptions\ArgumentIsNotNumericException;
 use Nekman\LuhnAlgorithm\Number;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class NumberTest extends TestCase
 {
-    /**
-     * @dataProvider provideFromString_success
-     */
+    #[DataProvider('provideFromString_success')]
     public function testFromString_success($number, $expected)
     {
         $this->assertEquals($expected, Number::fromString($number));
     }
 
-    public function provideFromString_success()
+    public static function provideFromString_success()
     {
         return [
             "String" => ["410321-9202", new Number('410321920', 2)],
@@ -51,16 +50,14 @@ class NumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideFromString_fail
-     */
+    #[DataProvider('provideFromString_fail')]
     public function testFromString_fail($number, $expected)
     {
         $this->expectException($expected);
         Number::fromString($number);
     }
 
-    public function provideFromString_fail()
+    public static function provideFromString_fail()
     {
         return [
             "Empty string" => ['', \InvalidArgumentException::class],
@@ -70,31 +67,27 @@ class NumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideToString_success
-     */
+    #[DataProvider('provideToString_success')]
     public function testToString_success($number, $expected)
     {
         $this->assertEquals($expected, (string)$number);
     }
 
-    public function provideToString_success()
+    public static function provideToString_success()
     {
         return [
             "Valid number" => [new Number(12345, 5), "123455"]
         ];
     }
 
-    /**
-     * @dataProvider provideNew_fail
-     */
+    #[DataProvider('provideNew_fail')]
     public function testNew_fail($number, $checkDigit, $expected)
     {
         $this->expectException($expected);
         new Number($number, $checkDigit);
     }
 
-    public function provideNew_fail()
+    public static function provideNew_fail()
     {
         return [
             "Invalid number" => ['abc123', 1, \InvalidArgumentException::class],
@@ -104,9 +97,7 @@ class NumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideProperties
-     */
+    #[DataProvider('provideProperties')]
     public function testProperties($input, $checkDigit)
     {
         $number = new Number($input, $checkDigit);
@@ -114,7 +105,7 @@ class NumberTest extends TestCase
         $this->assertEquals($checkDigit, $number->getCheckDigit());
     }
 
-    public function provideProperties()
+    public static function provideProperties()
     {
         return [
             "Valid number and check digit" => [123, 1],

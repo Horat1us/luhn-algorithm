@@ -30,6 +30,7 @@ use Nekman\LuhnAlgorithm\Contract\LuhnAlgorithmExceptionInterface;
 use Nekman\LuhnAlgorithm\Exceptions\MissingCheckDigitException;
 use Nekman\LuhnAlgorithm\LuhnAlgorithm;
 use Nekman\LuhnAlgorithm\Number;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class LuhnAlgorithmTest extends TestCase
@@ -39,15 +40,13 @@ class LuhnAlgorithmTest extends TestCase
      */
     private $luhn;
 
-    /**
-     * @dataProvider provideIsValid_success
-     */
+    #[DataProvider('provideIsValid_success')]
     public function testIsValid_success($number, $expected)
     {
         $this->assertEquals($expected, $this->luhn->isValid($number));
     }
 
-    public function provideIsValid_success()
+    public static function provideIsValid_success()
     {
         return [
             "Valid number" => [new Number('12345', 5), true],
@@ -59,16 +58,14 @@ class LuhnAlgorithmTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideIsValid_failure
-     */
+    #[DataProvider('provideIsValid_failure')]
     public function testIsValid_failure($number, $exception)
     {
         $this->expectException($exception);
         $this->luhn->isValid($number);
     }
 
-    public function provideIsValid_failure()
+    public static function provideIsValid_failure()
     {
         return [
             "Invalid argument" => [new Number(123, null), InvalidArgumentException::class],
@@ -77,15 +74,13 @@ class LuhnAlgorithmTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideCalcChecksum_success
-     */
+    #[DataProvider('provideCalcChecksum_success')]
     public function testCalcChecksum_success($number, $expected)
     {
         $this->assertEquals($expected, $this->luhn->calcChecksum($number));
     }
 
-    public function provideCalcChecksum_success()
+    public static function provideCalcChecksum_success()
     {
         return [
             "Valid checksum" => [new Number(3199723370002), 50],
@@ -93,15 +88,13 @@ class LuhnAlgorithmTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideCalcCheckDigit_success
-     */
+    #[DataProvider('provideCalcCheckDigit_success')]
     public function testCalcCheckDigit_success($number, $expected)
     {
         $this->assertEquals($expected, $this->luhn->calcCheckDigit($number));
     }
 
-    public function provideCalcCheckDigit_success()
+    public static function provideCalcCheckDigit_success()
     {
         return [
             "Valid number" => [new Number(12345), 5],
