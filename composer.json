@@ -36,10 +36,10 @@
 		}
 	},
 	"require": {
-		"php": "^7.4||^8.0"
+		"php": ">=8.4"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^9.0",
+		"phpunit/phpunit": "^13.4",
 		"friendsofphp/php-cs-fixer": "^3.75",
 		"php-coveralls/php-coveralls": "^2.1"
 	},

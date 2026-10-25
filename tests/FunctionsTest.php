@@ -3,17 +3,18 @@
 namespace Nekman\LuhnAlgorithm\Test;
 
 use function Nekman\LuhnAlgorithm\Functions\string_is_numeric;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class FunctionsTest extends TestCase
 {
-    /** @dataProvider provideStringIsNumeric */
+    #[DataProvider('provideStringIsNumeric')]
     public function testStringIsNumeric($string, $expected)
     {
         $this->assertEquals($expected, string_is_numeric($string));
     }
 
-    public function provideStringIsNumeric()
+    public static function provideStringIsNumeric()
     {
         return [
             "integer string" => ["123", true],
